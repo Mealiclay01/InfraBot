@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - chromadata:/chroma/chroma
+    restart: unless-stopped
+
+  infrabot-backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - CHROMA_URL=http://chromadb:8000
+    env_file:
+      - .env
+    volumes:
+      - ./runbooks:/runbooks
+    depends_on:
+      - chromadb
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
+
+  infrabot-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - infrabot-backend
+    restart: always
+
+volumes:
+  chromadata:

@@ -1,0 +1,30 @@
+{
+  "name": "infrabot-backend",
+  "version": "1.0.0",
+  "description": "InfraBot — Autonomous Infrastructure AI Agent Backend",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "mcp": "npx tsx src/mcp/server.ts"
+  },
+  "dependencies": {
+    "ssh2": "^1.15.0",
+    "better-sqlite3": "^11.7.0",
+    "express": "^4.21.0",
+    "cors": "^2.8.5",
+    "ws": "^8.18.0",
+    "dotenv": "^16.4.5",
+    "uuid": "^10.0.0",
+    "chromadb": "^1.9.2",
+    "node-fetch": "^3.3.2",
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "glob": "^11.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "@types/node": "^22.5.0",
+    "typescript": "^5.5.0"
+  }
+}
