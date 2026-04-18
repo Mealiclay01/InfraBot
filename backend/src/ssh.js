@@ -5,10 +5,10 @@ dotenv.config();
 const servers = [
   {
     name: 'proxmox-host',
-    host: process.env.SSH_HOST || '100.78.118.12',
+    host: process.env.SSH_HOST,
     port: 22,
-    username: process.env.SSH_USERNAME || 'root',
-    password: process.env.SSH_PASSWORD || '06977202',
+    username: process.env.SSH_USERNAME,
+    password: process.env.SSH_PASSWORD,
     privateKey: process.env.SSH_PRIVATE_KEY
   }
 ];

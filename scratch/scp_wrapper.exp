@@ -2,7 +2,9 @@
 set password [lindex $argv 0]
 set src [lindex $argv 1]
 set dest [lindex $argv 2]
-spawn scp -o StrictHostKeyChecking=no $src root@100.78.118.12:$dest
+set host [lindex $argv 3]
+set user [lindex $argv 4]
+spawn scp -o StrictHostKeyChecking=no $src $user@$host:$dest
 expect {
     "*assword:*" {
         send "$password\n"
